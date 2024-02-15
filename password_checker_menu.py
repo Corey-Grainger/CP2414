@@ -42,7 +42,7 @@ def main():
         else:
             print('Invalid Input')
         print(MENU)
-        choice = int(input('> '))
+        choice = (input('> '))
     print('Done')
 
 
@@ -83,10 +83,8 @@ def authenticate_password(username, password):
         for row in reader:
             saved_username = row['Username']
             hashed_password = row['Hash_Password']
-            salt = row['Salt']
             if username == saved_username:
-                if hashed_password == cross_reference_hashed_password(password, salt):
-                    return True
+                return cross_reference_hashed_password(password, hashed_password)
         return False
 
 
