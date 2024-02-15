@@ -1,6 +1,6 @@
 """
-CP1404/CP5632 - Practical
-Password checker "skeleton" code to help you get started
+CP2414- Network Security
+Password checker code
 """
 
 MIN_LENGTH = 8

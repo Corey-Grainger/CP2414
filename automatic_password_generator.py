@@ -1,4 +1,5 @@
-"""Automatic password generator"""
+"""CP2414
+Automatic password generator"""
 
 import random
 from password_checker import is_valid_password
