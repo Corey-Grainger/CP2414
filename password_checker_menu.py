@@ -1,5 +1,7 @@
 from automatic_password_generator import generate_random_password
 from password_checker import is_valid_password
+from password_hashing import hash_password
+from password_hashing import cross_reference_hashed_password
 
 MENU = 'menu goes here'
 
@@ -23,6 +25,7 @@ def main():
         print(MENU)
         choice = int(input('> '))
     print('Done')
+    hashed_password = hash_password(password)
 
 
 if __name__ == '__main__':
