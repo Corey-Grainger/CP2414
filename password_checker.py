@@ -13,7 +13,7 @@ IS_SPECIAL_CHARACTER_REQUIRED = True
 SPECIAL_CHARACTERS = "!@#$%^&*()_-=+`~,./'[]<>?{}|\\"
 
 
-def is_valid_password(password):
+def is_valid_password(password, password_confirmation):
     """Determine if password is a valid password."""
     lowercase_count = 0
     uppercase_count = 0
@@ -33,6 +33,8 @@ def is_valid_password(password):
     if uppercase_count < MIN_UPPERCASE or lowercase_count < MIN_LOWERCASE or digit_count < MIN_DIGIT:
         return False
     if IS_SPECIAL_CHARACTER_REQUIRED and special_character_count < MIN_SPECIAL:
+        return False
+    if password != password_confirmation:
         return False
     return True
 
