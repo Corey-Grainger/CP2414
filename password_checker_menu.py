@@ -68,7 +68,7 @@ def get_valid_username():
 
 
 def is_valid_username(username):
-    with open("password_database.csv", 'r') as in_file:
+    with open("password_database.txt", 'r') as in_file:
         reader = csv.DictReader(in_file, delimiter=',')
         for row in reader:
             saved_username = row['Username']
@@ -78,7 +78,7 @@ def is_valid_username(username):
 
 
 def authenticate_password(username, password):
-    with open("password_database.csv", 'r') as in_file:
+    with open("password_database.txt", 'r') as in_file:
         reader = csv.DictReader(in_file, delimiter=',')
         for row in reader:
             saved_username = row['Username']
