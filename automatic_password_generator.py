@@ -3,30 +3,18 @@
 import random
 from password_checker import is_valid_password
 
+required_number_of_characters=12
+required_number_of_uppercase_characters=1
+required_number_of_lowercase_characters=1
+required_number_of_special_characters=1
+required_number_of_digits=1
+uppercase_characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+lowercase_characters = "abcdefghijklmnopqrstuvwxyz"
+digits="1234567890"
+special_characters="!@#$%^&*()_-=+`~,./'[]<>?{}|\\"
 
-def main():
-    """Program to generate a random password with a specified requirements and check the password
-    matches the requirements."""
-    required_number_of_characters = int(input("How many characters: "))
-    required_number_of_uppercase_characters = int(input("How many uppercase characters: "))
-    required_number_of_lowercase_characters = int(input("How many lowercase characters: "))
-    required_number_of_digits = int(input("How many digits: "))
-    required_number_of_special_characters = int(input("How many special characters: "))
-    random_password = generate_random_password(required_number_of_characters, required_number_of_uppercase_characters,
-                                               required_number_of_lowercase_characters,
-                                               required_number_of_special_characters, required_number_of_digits)
-    print(random_password)
-    print(is_valid_password(random_password, required_number_of_characters, required_number_of_characters,
-                            required_number_of_uppercase_characters, required_number_of_lowercase_characters,
-                            required_number_of_digits, required_number_of_special_characters))
-
-
-def generate_random_password(required_number_of_characters=12, required_number_of_uppercase_characters=1,
-                             required_number_of_lowercase_characters=1, required_number_of_special_characters=1,
-                             required_number_of_digits=1, uppercase_characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-                             lowercase_characters="abcdefghijklmnopqrstuvwxyz", digits="1234567890",
-                             special_characters="!@#$%^&*()_-=+`~,./'[]<>?{}|\\"):
-    """Generate a random password with the specified length and combination of characters."""
+def generate_random_password():
+    """Returns a random password with the specific characteristics."""
     password_characters = []
     random_password = ""
     for i in range(required_number_of_uppercase_characters):
@@ -46,14 +34,5 @@ def generate_random_password(required_number_of_characters=12, required_number_o
     return random_password
 
 
-def test_password_generator():
-    password = generate_random_password()
-    print(password)
-    print(is_valid_password(password))
-    password = generate_random_password()
-    print(password)
-    print(is_valid_password(password))
-
-
 # test_password_generator()
-main()
+
