@@ -13,25 +13,7 @@ IS_SPECIAL_CHARACTER_REQUIRED = True
 SPECIAL_CHARACTERS = "!@#$%^&*()_-=+`~,./'[]<>?{}|\\"
 
 
-def main():
-    """Program to get and check a user's password."""
-    print("Please enter a valid password")
-    print(f"Your password must be between {MIN_LENGTH} and {MAX_LENGTH} characters, and contain:")
-    print("\t1 or more uppercase characters")
-    print("\t1 or more lowercase characters")
-    print("\t1 or more numbers")
-    if IS_SPECIAL_CHARACTER_REQUIRED:
-        print(f"\tand 1 or more special characters: {SPECIAL_CHARACTERS}")
-    password = input("> ")
-    while not is_valid_password(password, MIN_LENGTH, MAX_LENGTH, MIN_UPPERCASE, MIN_LOWERCASE, MIN_DIGIT, MIN_SPECIAL,
-                                IS_SPECIAL_CHARACTER_REQUIRED, SPECIAL_CHARACTERS):
-        print("Invalid password!")
-        password = input("> ")
-    print(f"Your {len(password)}-character password is valid: {password}")
-
-
-def is_valid_password(password, min_length=8, max_length=20, min_uppercase=1, min_lowercase=1, min_digit=1,
-                      min_special=1, special_chars_required=True, special_characters="!@#$%^&*()_-=+`~,./'[]<>?{}|\\"):
+def is_valid_password(password):
     """Determine if password is a valid password."""
     lowercase_count = 0
     uppercase_count = 0
@@ -42,18 +24,15 @@ def is_valid_password(password, min_length=8, max_length=20, min_uppercase=1, mi
             uppercase_count += 1
         if char.islower():
             lowercase_count += 1
-        if char in special_characters:
+        if char in SPECIAL_CHARACTERS:
             special_character_count += 1
         if char.isdigit():
             digit_count += 1
-    if len(password) < min_length or len(password) > max_length:
+    if len(password) < MIN_LENGTH or len(password) > MAX_LENGTH:
         return False
-    if uppercase_count < min_uppercase or lowercase_count < min_lowercase or digit_count < min_digit:
+    if uppercase_count < MIN_UPPERCASE or lowercase_count < MIN_LOWERCASE or digit_count < MIN_DIGIT:
         return False
-    if special_chars_required and special_character_count < min_special:
+    if IS_SPECIAL_CHARACTER_REQUIRED and special_character_count < MIN_SPECIAL:
         return False
     return True
 
-
-if __name__ == '__main__':
-    main()
