@@ -42,7 +42,7 @@ def main():
         else:
             print('Invalid Input')
         print(MENU)
-        choice = (input('> '))
+        choice = (input('> ')).upper()
     print('Done')
 
 
