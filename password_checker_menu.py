@@ -9,6 +9,8 @@ from password_save_function import remove_password_file_entry
 from password_hashing import cross_reference_hashed_password
 
 MENU = '(S)ign up\n(C)hange password\n(L)ogin\n(Q)uit'
+PASSWORD_REQUIREMENTS_STRING = ("Passwords must be between 8 and 20 characters long and include at least 1 uppcase letter"
+                                ", 1 lowercase letter, 1 digit and 1 symbol.")
 
 
 def main():
@@ -49,10 +51,12 @@ def main():
 def get_valid_password():
     random_password = generate_random_password()
     print(f"Your suggested random password is {random_password}")
+    print(PASSWORD_REQUIREMENTS_STRING)
     password = input('Password: ')
     password_confirmation = input('Confirm Password: ')
     while not is_valid_password(password, password_confirmation):
         print('invalid')
+        print(PASSWORD_REQUIREMENTS_STRING)
         password = input('Password: ')
         password_confirmation = input('Confirm Password: ')
     hashed_password, salt = hash_password(password)
@@ -62,8 +66,8 @@ def get_valid_password():
 def get_valid_username():
     username = input("Enter username: ")
     while not is_valid_username(username):
-            print("Username already in use")
-            username = input("Enter username: ")
+        print("Username already in use")
+        username = input("Enter username: ")
     return username
 
 
