@@ -34,6 +34,7 @@ def main():
             new_password, salt = get_valid_password()
             remove_password_file_entry(username)
             create_password_file_entry(username, new_password, salt)
+            print("Password changed successfully")
         elif choice == "L":
             username = input("Enter username: ")
             password = input("Enter password: ")
@@ -55,7 +56,7 @@ def get_valid_password():
     password = input('Password: ')
     password_confirmation = input('Confirm Password: ')
     while not is_valid_password(password, password_confirmation):
-        print('invalid')
+        print('Invalid')
         print(PASSWORD_REQUIREMENTS_STRING)
         password = input('Password: ')
         password_confirmation = input('Confirm Password: ')
